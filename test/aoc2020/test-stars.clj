@@ -1,4 +1,4 @@
-(ns aoc2020.test
+(ns aoc2020.test-stars
   (:require [clojure.test :refer [deftest
                                   is]]))
 

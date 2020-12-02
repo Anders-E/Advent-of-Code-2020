@@ -31,5 +31,5 @@ All code found in this repository is licensed under the MIT License. For more in
 |5|||
 |4|||
 |3|||
-|2|||
+|2|⭐️|⭐️|
 |1|⭐️|⭐️|

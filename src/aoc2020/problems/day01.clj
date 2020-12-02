@@ -1,10 +1,10 @@
 (ns aoc2020.problems.day01
-  (:require [aoc2020.util :refer [slurp-input]]
+  (:require [aoc2020.util :refer [get-input]]
             [clojure.string :refer [split-lines]]))
 
-(def input (slurp-input 1))
+(def input (get-input 1))
 
-(defn parse-input [input] (map #(Integer/parseInt %) (split-lines input)))
+(defn parse-input [input] (map #(Integer. %) (split-lines input)))
 
 (defn pairs [seq]
   (for [a seq
