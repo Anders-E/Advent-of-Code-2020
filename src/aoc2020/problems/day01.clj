@@ -17,7 +17,7 @@
         c seq]
     [a b c]))
 
-(defn day1 [nums chunks]
+(defn fix-expense-report [nums chunks]
   (->> (chunks nums)
        (filter #(= (apply + %)
                    2020))
@@ -28,10 +28,10 @@
   ([]
    (star1 input))
   ([input]
-   (day1 (parse-input input) pairs)))
+   (fix-expense-report (parse-input input) pairs)))
 
 (defn star2
   ([]
    (star2 input))
   ([input]
-   (day1 (parse-input input) triplets)))
+   (fix-expense-report (parse-input input) triplets)))

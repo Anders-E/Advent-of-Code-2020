@@ -1,5 +1,6 @@
 (ns aoc2020.problems.day02
-  (:require [aoc2020.util :refer [get-input]]
+  (:require [aoc2020.util :refer [get-input
+                                  p]]
             [clojure.string :refer [split-lines]]))
 
 (def input (get-input 2))
@@ -11,7 +12,7 @@
 (defn valid-password1 [min max char password]
   (let [min        (Integer. min)
         max        (Integer. max)
-        char       (nth char 0)
+        char       (get char 0)
         charcounts (frequencies password)
         count      (get charcounts char 0)]
     (<= min count max)))
@@ -28,7 +29,7 @@
 
 (defn validate-passwords [input policy]
   (->> (parse-input input)
-       (map (partial apply policy))
+       (map (p apply policy))
        (filter #(= true %))
        (count)))
 

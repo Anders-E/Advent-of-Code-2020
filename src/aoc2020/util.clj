@@ -11,11 +11,15 @@
 (defn get-answer
   "Get correct answer for specified day if it exists."
   [day star]
-  (slurp-resource (format "answers/day_%02d/%c.txt"
+  (slurp-resource (format "answers/day%02d/%c.txt"
                           day
                           ({1 \a 2 \b} star))))
 
 (defn get-input
   "Get input for specified day"
   [day]
-  (slurp-resource (format "input/day_%02d.txt" day)))
+  (slurp-resource (format "input/day%02d.txt" day)))
+
+(def p
+  "Alias for `partial`."
+  partial)
