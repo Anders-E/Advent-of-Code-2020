@@ -23,3 +23,8 @@
 (def p
   "Alias for `partial`."
   partial)
+
+(defn filter-count
+  "Combined filter and count."
+  [pred coll]
+  (count (filter pred coll)))

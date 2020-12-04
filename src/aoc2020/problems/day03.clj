@@ -1,5 +1,6 @@
 (ns aoc2020.problems.day03
-  (:require [aoc2020.util :refer [get-input
+  (:require [aoc2020.util :refer [filter-count
+                                  get-input
                                   p]]
             [clojure.string :refer [split-lines]]))
 
@@ -19,20 +20,17 @@
   (let [w (count (first tree-map))]
     (->> slope
          (map (fn [[x y]] (getget tree-map (rem x w) y)))
-         (filter #(= \# %))
-         (count))))
+         (filter-count (p = \#)))))
 
 (defn star1
-  ([]
-   (star1 input))
+  ([] (star1 input))
   ([input]
    (let [tree-map (split-lines input)
          h        (count tree-map)]
      (trees tree-map (nth (slopes h) 1)))))
 
 (defn star2
-  ([]
-   (star2 input))
+  ([] (star2 input))
   ([input]
    (let [tree-map (split-lines input)
          h        (count tree-map)]

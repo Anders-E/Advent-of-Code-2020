@@ -1,5 +1,6 @@
 (ns aoc2020.problems.day02
-  (:require [aoc2020.util :refer [get-input
+  (:require [aoc2020.util :refer [filter-count
+                                  get-input
                                   p]]
             [clojure.string :refer [split-lines]]))
 
@@ -29,18 +30,14 @@
 
 (defn validate-passwords [input policy]
   (->> (parse-input input)
-       (map (p apply policy))
-       (filter #(= true %))
-       (count)))
+       (filter-count (p apply policy))))
 
 (defn star1
-  ([]
-   (star1 input))
+  ([] (star1 input))
   ([input]
    (validate-passwords input valid-password1)))
 
 (defn star2
-  ([]
-   (star2 input))
+  ([] (star2 input))
   ([input]
    (validate-passwords input valid-password2)))

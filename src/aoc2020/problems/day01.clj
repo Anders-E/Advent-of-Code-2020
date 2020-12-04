@@ -25,13 +25,11 @@
        (apply *)))
 
 (defn star1
-  ([]
-   (star1 input))
+  ([] (star1 input))
   ([input]
    (fix-expense-report (parse-input input) pairs)))
 
 (defn star2
-  ([]
-   (star2 input))
+  ([] (star2 input))
   ([input]
    (fix-expense-report (parse-input input) triplets)))
