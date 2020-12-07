@@ -28,3 +28,16 @@
   "Combined filter and count."
   [pred coll]
   (count (filter pred coll)))
+
+(defn map-keys
+  [f m]
+  (apply merge (for [[k v] m] {(f k) v})))
+
+(defn map-values
+  [f m]
+  (apply merge (for [[k v] m] {k (f v)})))
+
+(defn in?
+  "Check if value is in collection."
+  [x coll]
+  (not (nil? (some #(= % x) coll))))

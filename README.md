@@ -26,7 +26,7 @@ All code found in this repository is licensed under the MIT License. For more in
 |10|||
 |9|||
 |8|||
-|7|||
+|7|⭐️|⭐️|
 |6|⭐️|⭐️|
 |5|⭐️|⭐️|
 |4|⭐️|⭐️|
