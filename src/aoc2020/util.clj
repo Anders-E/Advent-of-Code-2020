@@ -17,8 +17,11 @@
 
 (defn get-input
   "Get input for specified day"
-  [day]
-  (slurp-resource (format "input/day%02d.txt" day)))
+  ([]
+   (let [day (Integer. (second (re-find #"day(\d\d)" (str *ns*))))]
+     (get-input day)))
+  ([day]
+   (slurp-resource (format "input/day%02d.txt" day))))
 
 (def p
   "Alias for `partial`."

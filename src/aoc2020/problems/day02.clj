@@ -4,7 +4,7 @@
                                   p]]
             [clojure.string :refer [split-lines]]))
 
-(def input (get-input 2))
+(def input (get-input))
 
 (defn split-line [line] (rest (re-matches #"(\d+)-(\d+) (\w): (\w+)" line)))
 

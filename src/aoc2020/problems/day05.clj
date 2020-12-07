@@ -3,7 +3,7 @@
             [clojure.set :refer [difference]]
             [clojure.string :refer [split-lines]]))
 
-(def input (get-input 5))
+(def input (get-input))
 
 (defn partitioning->bin [partitioning]
   (Integer/parseInt (apply str (map {\F 0 \B 1 \R 1 \L 0} partitioning)) 2))

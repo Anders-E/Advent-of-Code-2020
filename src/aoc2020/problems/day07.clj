@@ -6,7 +6,7 @@
                                   p]]
             [clojure.string :refer [split-lines]]))
 
-(def input (get-input 7))
+(def input (get-input))
 
 (defn parse-line [line]
   (let [bag      (first (re-find #"^(\w+ \w+)" line))

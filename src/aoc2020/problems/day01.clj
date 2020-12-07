@@ -2,7 +2,7 @@
   (:require [aoc2020.util :refer [get-input]]
             [clojure.string :refer [split-lines]]))
 
-(def input (get-input 1))
+(def input (get-input))
 
 (defn parse-input [input] (map #(Integer. %) (split-lines input)))
 

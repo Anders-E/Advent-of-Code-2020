@@ -4,7 +4,7 @@
                                   p]]
             [clojure.string :refer [split]]))
 
-(def input (get-input 4))
+(def input (get-input))
 
 (defn parse-input [input] 
   (->> (split input #"\n\n")

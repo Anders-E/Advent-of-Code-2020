@@ -5,7 +5,7 @@
             [clojure.string :refer [split
                                     split-lines]]))
 
-(def input (get-input 6))
+(def input (get-input))
 
 (defn star1
   ([] (star1 input))

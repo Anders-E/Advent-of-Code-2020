@@ -4,7 +4,7 @@
                                   p]]
             [clojure.string :refer [split-lines]]))
 
-(def input (get-input 3))
+(def input (get-input))
 
 (defn getget [coll x y] (get (get coll y) x))
 
