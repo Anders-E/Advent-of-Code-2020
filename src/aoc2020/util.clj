@@ -44,3 +44,8 @@
   "Check if value is in collection."
   [x coll]
   (not (nil? (some #(= % x) coll))))
+
+(defn fifo-queue
+  "Wrapper for PersistentQueue."
+  [& [coll]]
+  (reduce conj clojure.lang.PersistentQueue/EMPTY coll))
