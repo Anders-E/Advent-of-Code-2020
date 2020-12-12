@@ -1,12 +1,11 @@
 (ns aoc2020.problems.day03
   (:require [aoc2020.util :refer [filter-count
+                                  getget
                                   get-input
                                   p]]
             [clojure.string :refer [split-lines]]))
 
 (def input (get-input))
-
-(defn getget [coll x y] (get (get coll y) x))
 
 (defn slope [h [x-step y-step]]
   (map vector

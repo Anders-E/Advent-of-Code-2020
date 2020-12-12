@@ -1,5 +1,6 @@
 (ns aoc2020.problems.day08
-  (:require [aoc2020.util :refer [get-input]]
+  (:require [aoc2020.util :refer [get-input
+                                  remove-vals]]
             [clojure.string :refer [split
                                     split-lines]]))
 
@@ -43,9 +44,9 @@
     [(get switch op op) arg]))
 
 (defn switch-ops [prog]
-  (remove #(= % prog)
-          (distinct (map-indexed #(assoc prog %1 (switch-jmp-nop %2))
-                                 prog))))
+  (remove-vals prog
+               (distinct (map-indexed #(assoc prog %1 (switch-jmp-nop %2))
+                                      prog))))
 
 (defn diff-index [a b]
   (let [zip (map vector a b)]

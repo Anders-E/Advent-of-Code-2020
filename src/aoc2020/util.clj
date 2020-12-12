@@ -32,6 +32,13 @@
   [pred coll]
   (count (filter pred coll)))
 
+(defn getget
+  "The one true 'double get'"
+  ([coll [x y]]
+   (getget coll x y))
+  ([coll x y]
+   (get (get coll y) x)))
+
 (defn map-keys
   [f m]
   (apply merge (for [[k v] m] {(f k) v})))
@@ -39,6 +46,14 @@
 (defn map-values
   [f m]
   (apply merge (for [[k v] m] {k (f v)})))
+
+(defn filter-vals
+  [val coll]
+  (filter (p = val) coll))
+
+(defn remove-vals
+  [val coll]
+  (remove (p = val) coll))
 
 (defn in?
   "Check if value is in collection."

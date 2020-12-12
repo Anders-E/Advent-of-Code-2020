@@ -1,7 +1,8 @@
 (ns aoc2020.problems.day09
   (:require [aoc2020.util :refer [fifo-queue
                                   get-input
-                                  in?]]
+                                  in?
+                                  remove-vals]]
             [clojure.string :refer [split-lines]]))
 
 (def input (get-input))
@@ -28,7 +29,7 @@
    (let [nums     (parse-input input)
          prevs    (fifo-queue (take 25 nums))
          preamble (fifo-queue (for [a prevs]
-                                (for [b (remove #(= % a) prevs)]
+                                (for [b (remove-vals a prevs)]
                                   (+ a b))))]
      (first-faulty (drop 25 nums) prevs preamble))))
 

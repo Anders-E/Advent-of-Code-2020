@@ -16,9 +16,9 @@
   ([] (star1 input))
   ([input]
    (let [adapters (sort (add-outlet&device (parse-input input))) 
-         diffs    (map - adapters (drop 1 adapters))]
-     (* (filter-count #(= -1 %) diffs)
-        (filter-count #(= -3 %) diffs)))))
+         diffs    (map - (drop 1 adapters) adapters)]
+     (* (filter-count #(= 1 %) diffs)
+        (filter-count #(= 3 %) diffs)))))
 
 (defn star2
   ([] (star2 input))
