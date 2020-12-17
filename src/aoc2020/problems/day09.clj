@@ -2,15 +2,13 @@
   (:require [aoc2020.util :refer [fifo-queue
                                   get-input
                                   in?
+                                  pop-and-queue
                                   remove-vals]]
             [clojure.string :refer [split-lines]]))
 
 (def input (get-input))
 
 (defn parse-input [input] (map #(Integer. %) (split-lines input)))
-
-(defn pop-and-queue [queue x]
-  (conj (pop queue) x))
 
 (defn first-faulty [nums prevs sums]
   (let [current (first nums)]

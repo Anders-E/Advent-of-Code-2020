@@ -64,3 +64,6 @@
   "Wrapper for PersistentQueue."
   [& [coll]]
   (reduce conj clojure.lang.PersistentQueue/EMPTY coll))
+
+(defn pop-and-queue [queue x]
+  (conj (pop queue) x))
