@@ -67,3 +67,6 @@
 
 (defn pop-and-queue [queue x]
   (conj (pop queue) x))
+
+(defn index [coll]
+  (map-indexed (fn [i x] [i x]) coll))
