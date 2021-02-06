@@ -21,6 +21,19 @@
                                         (pop prevs))))
       current)))
 
+(def star1-answer 22406676)
+
+(defn contiguous_set [nums queue sum]
+  (if (= sum star1-answer)
+    queue
+    (if (< sum star1-answer)
+      (contiguous_set (rest nums)
+                      (conj queue (first nums))
+                      (+ sum (first nums)))
+      (contiguous_set nums
+                      (pop queue)
+                      (- sum (first queue))))))
+
 (defn star1
   ([] (star1 input))
   ([input]
@@ -34,4 +47,8 @@
 (defn star2
   ([] (star2 input))
   ([input]
-   nil))
+   (let [set (contiguous_set (parse-input input)
+                             (fifo-queue)
+                             0)]
+     (+ (apply min set)
+        (apply max set)))))
