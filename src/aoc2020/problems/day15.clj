@@ -13,7 +13,7 @@
                           [num (fifo-queue [(inc i)])])
                         nums)))
 
-;; TODO: Tidy up
+;; TODO: Tidy up and speed up
 (defn save [history n turn]
   (if (contains? history n)
     (let [turns (history n)]
@@ -46,4 +46,10 @@
 (defn star2
   ([] (star2 input))
   ([input]
-   nil))
+   (let [nums    (parse-input input)
+         history (starting-nums->history nums)
+         prev    (last nums)
+         turn    (inc (count nums))]
+     (nth (concat nums
+                  (speak history prev turn))
+          29999999))))
