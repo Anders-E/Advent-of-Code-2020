@@ -1,6 +1,10 @@
 (ns aoc2020.problems.day16
   (:require [aoc2020.util :refer [get-input
-                                  p]]
+                                  index
+                                  p
+                                  remove-vals
+                                  transpose]]
+            [clojure.set :refer [difference]]
             [clojure.string :refer [split
                                     split-lines]]))
 
@@ -43,18 +47,52 @@
 (defn invalid-all-rules? [rules value]
   (every? #(not (% value)) rules))
 
-(defn filter-any-invalid-values [rules values]
+(defn filter-invalid-fields [rules values]
   (filter (p invalid-all-rules? rules) values))
+
+(defn contains-no-invalid-fields [rules values]
+  (not-any? (p invalid-all-rules? rules) values))
+
+(defn valid-rule-for-field [values rule]
+  (every? #(rule %) values))
+
+(defn valid-rules-for-field [rules values]
+  (->> (map (p valid-rule-for-field values) rules)
+       (map-indexed (fn [i valid] (if valid i false)))
+       (remove-vals false)
+       (set)))
+
+(defn deduce-fields [valid-rules]
+  (let [indiced-rules      (index valid-rules)
+        rules-by-ambiguity (sort-by second #(< (count %1) (count %2)) indiced-rules)
+        unambiguous-rules  (cons (first rules-by-ambiguity)
+                                 (map (fn [[i v] [_ w]]
+                                        [i (difference v w)])
+                                      (drop 1 rules-by-ambiguity)
+                                      rules-by-ambiguity))
+        rule-to-field      (into {}
+                                 (map (fn [[i v]]
+                                        [(first v) i]))
+                                 unambiguous-rules)]
+    rule-to-field))
 
 (defn star1
   ([] (star1 input))
   ([input]
    (let [[rules _ tickets] (parse-input input)]
-     (->> (map (p filter-any-invalid-values rules) tickets)
+     (->> (map (p filter-invalid-fields rules) tickets)
           (flatten)
           (apply +)))))
 
 (defn star2
   ([] (star2 input))
   ([input]
-   nil))
+   (let [[rules my-ticket tickets] (parse-input input)
+         tickets           (filter (p contains-no-invalid-fields rules) tickets)
+         fields            (transpose tickets)
+         departure-rules   (range 0 6)]
+     (as-> (map (p valid-rules-for-field rules) fields) $
+       (deduce-fields $)
+       (map $ departure-rules)
+       (map (p nth my-ticket) $)
+       (apply * $)))))
